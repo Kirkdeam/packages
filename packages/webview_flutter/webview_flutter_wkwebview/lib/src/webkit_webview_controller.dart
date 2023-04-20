@@ -698,7 +698,9 @@ class WebKitNavigationDelegate extends PlatformNavigationDelegate {
         WKWebViewConfiguration configuration,
         WKNavigationAction navigationAction,
       ) {
-        if (!navigationAction.targetFrame.isMainFrame) {
+        print(navigationAction.navigationType.toString());
+        if (!navigationAction.targetFrame.isMainFrame &&
+            navigationAction.navigationType != WKNavigationType.other) {
           webView.loadRequest(navigationAction.request);
         }
       },
